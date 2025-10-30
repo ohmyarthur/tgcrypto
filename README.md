@@ -1,34 +1,45 @@
 # TgCrypto
 
-> [!NOTE]
-> The project is no longer maintained or supported. Thanks for appreciating it.
+> Modern High-Performance Cryptography Extension for Pyrogram
+>
+> Forked and optimized by [ohmyarthur](https://github.com/ohmyarthur/tgcrypto)
 
-> [!NOTE]
-> The implementations of the algorithms presented in this repository are to be considered for educational purposes only.
+**TgCrypto** is a fast cryptography library written in C as a Python extension, implementing
+MTProto 2.0 algorithms required by [Pyrogram](https://github.com/pyrogram/pyrogram):
 
-> Fast and Portable Cryptography Extension Library for Pyrogram
+- **AES-256-IGE** - MTProto v2.0 encryption
+- **AES-256-CTR** - CDN encrypted files
+- **AES-256-CBC** - Encrypted passport credentials
 
-**TgCrypto** is a Cryptography Library written in C as a Python extension. It is designed to be portable, fast,
-easy to install and use. TgCrypto is intended for [Pyrogram](https://github.com/pyrogram/pyrogram) and implements the
-cryptographic algorithms Telegram requires, namely:
+## Features
 
-- **`AES-256-IGE`** - used in [MTProto v2.0](https://core.telegram.org/mtproto).
-- **`AES-256-CTR`** - used for [CDN encrypted files](https://core.telegram.org/cdn).
-- **`AES-256-CBC`** - used for [encrypted passport credentials](https://core.telegram.org/passport).
+- Python 3.10+ support
+- Optimized C implementation with LTO
+- MTProto 2.0 compliant
+- Zero dependencies
 
 ## Requirements
 
-- Python 3.7 or higher.
+- Python 3.10 or higher
+- C compiler (GCC/Clang/MSVC)
 
 ## Installation
 
-``` bash
-$ pip3 install -U tgcrypto
+**Direct from GitHub (recommended):**
+
+```bash
+pip install git+https://github.com/ohmyarthur/tgcrypto.git
+```
+
+**Or from source:**
+
+```bash
+git clone https://github.com/ohmyarthur/tgcrypto
+cd tgcrypto
+pip install -e .
 ```
 
 ## API
-
-TgCrypto API consists of these six methods:
 
 ```python
 def ige256_encrypt(data: bytes, key: bytes, iv: bytes) -> bytes: ...
@@ -156,11 +167,17 @@ print(data == cbc_decrypted)  # True
 
 ## Testing
 
-1. Clone this repository: `git clone https://github.com/pyrogram/tgcrypto`.
-2. Enter the directory: `cd tgcrypto`.
-3. Install `tox`: `pip3 install tox`
-4. Run tests: `tox`.
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -e .
+pip install pytest
+pytest tests/
+```
 
 ## License
 
-[LGPLv3+](COPYING.lesser) © 2017-present [Dan](https://github.com/delivrance)
+LGPLv3+ - See [COPYING.lesser](COPYING.lesser)
+
+Original: © 2017-present [Dan](https://github.com/delivrance)  
+Modified: [ohmyarthur](https://github.com/ohmyarthur)

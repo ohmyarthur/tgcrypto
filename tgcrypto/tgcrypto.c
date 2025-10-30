@@ -16,6 +16,8 @@
  *
  * You should have received a copy of the GNU Lesser General Public License
  * along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Modified by ohmyarthur <https://github.com/ohmyarthur>
  */
 
 #define PY_SSIZE_T_CLEAN
@@ -217,7 +219,7 @@ PyDoc_STRVAR(
     cbc256_decrypt_docs,
     "cbc256_decrypt(data, key, iv)\n"
     "--\n\n"
-    "AES-256-CBC Encryption"
+    "AES-256-CBC Decryption"
 );
 
 static PyMethodDef methods[] = {
